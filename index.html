@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 Hells – PokeMMO Gym Rerun Guide</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --surface: #18181f;
+    --surface2: #1f1f28;
+    --border: #2a2a38;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --accent: #c84b4b;
+    --accent2: #e07050;
+    --yellow: #d4a017;
+    --yellow-bg: rgba(212,160,23,0.12);
+    --green: #4caf72;
+    --green-bg: rgba(76,175,114,0.12);
+    --red: #e04444;
+    --red-bg: rgba(224,68,68,0.12);
+    --optional: #5588cc;
+    --optional-bg: rgba(85,136,204,0.10);
+    --heal: #c84b4b;
+    --radius: 8px;
+    --radius-lg: 12px;
+    font-size: 15px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-header h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent2);
+    letter-spacing: 0.03em;
+  }
+  .site-header .sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .flame { font-size: 1.3rem; }
+
+  /* Layout */
+  .layout {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  /* Sidebar nav */
+  .sidebar {
+    width: 200px;
+    min-width: 200px;
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .nav-region {
+    margin-bottom: 0.25rem;
+  }
+  .nav-region-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.6rem 1rem 0.3rem;
+  }
+  .nav-link {
+    display: block;
+    padding: 0.3rem 1rem 0.3rem 1.25rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: var(--text);
+    border-left-color: var(--accent2);
+    background: var(--surface2);
+  }
+  .nav-link.optional-link { color: #446699; }
+  .nav-link.optional-link:hover { color: var(--optional); }
+
+  /* Main content */
+  .main {
+    flex: 1;
+    padding: 2rem 2rem 4rem;
+    min-width: 0;
+  }
+
+  /* Legend */
+  .legend {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+  .legend-title {
+    width: 100%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+  }
+  .legend-pill {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .pill-yellow { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(212,160,23,0.3); }
+  .pill-green  { background: var(--green-bg);  color: var(--green);  border: 1px solid rgba(76,175,114,0.3); }
+  .pill-red    { background: var(--red-bg);    color: var(--red);    border: 1px solid rgba(224,68,68,0.3); }
+  .pill-blue   { background: var(--optional-bg); color: var(--optional); border: 1px solid rgba(85,136,204,0.3); }
+
+  /* Team bar */
+  .team-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .team-bar-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .team-mon {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3px 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .team-mon span { color: var(--muted); font-size: 0.75rem; }
+  .note-bar {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent2);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  .note-bar b { color: var(--text); }
+
+  /* Region header */
+  .region-section {
+    margin-bottom: 2.5rem;
+  }
+  .region-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .region-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .badge-hoenn   { background: rgba(30,120,200,0.2); color: #5599dd; border: 1px solid rgba(85,153,221,0.3); }
+  .badge-kanto   { background: rgba(200,75,75,0.2);  color: #dd6666; border: 1px solid rgba(221,102,102,0.3); }
+  .badge-sinnoh  { background: rgba(100,70,180,0.2); color: #9977cc; border: 1px solid rgba(153,119,204,0.3); }
+  .badge-unova   { background: rgba(50,150,100,0.2); color: #55bb88; border: 1px solid rgba(85,187,136,0.3); }
+  .badge-johto   { background: rgba(180,120,30,0.2); color: #cc9944; border: 1px solid rgba(204,153,68,0.3); }
+  .region-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Gym card */
+  .gym-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  .gym-card.optional {
+    border-left: 3px solid var(--optional);
+    opacity: 0.85;
+  }
+
+  .gym-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    background: var(--surface);
+    transition: background 0.15s;
+  }
+  .gym-header:hover { background: var(--surface2); }
+
+  .gym-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--muted);
+    min-width: 1.4rem;
+  }
+  .gym-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+  }
+  .gym-type {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .gym-leads {
+    font-size: 0.78rem;
+    color: var(--accent2);
+    font-weight: 500;
+  }
+  .gym-toggle {
+    font-size: 0.7rem;
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+  .gym-toggle.open { transform: rotate(90deg); }
+
+  .gym-body {
+    padding: 0 1rem 1rem;
+    border-top: 1px solid var(--border);
+    display: none;
+  }
+  .gym-body.open { display: block; }
+
+  /* Solve block */
+  .solve {
+    margin-top: 0.75rem;
+  }
+  .solve-default {
+    background: var(--surface2);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  .solve-default .lead-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+  }
+  .leads-bold {
+    font-weight: 700;
+    color: var(--accent2);
+    font-size: 0.9rem;
+  }
+
+  .branch {
+    border-radius: var(--radius);
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.6;
+    border-left: 3px solid;
+  }
+  .branch-yellow { background: var(--yellow-bg); border-color: var(--yellow); }
+  .branch-green  { background: var(--green-bg);  border-color: var(--green);  }
+  .branch-red    { background: var(--red-bg);    border-color: var(--red);    }
+  .branch-default { background: var(--surface2); border-color: var(--border); border-left-width: 1px; }
+
+  .branch-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .branch-yellow .branch-label { color: var(--yellow); }
+  .branch-green  .branch-label { color: var(--green); }
+  .branch-red    .branch-label { color: var(--red); }
+  .branch-default .branch-label { color: var(--muted); }
+
+  .cond { color: var(--muted); font-style: italic; }
+  .mon { font-weight: 600; color: var(--text); }
+  .move { font-weight: 600; color: #88aaee; }
+  .item-use { font-weight: 600; color: #ddaa44; }
+  .turn-label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Heal banner */
+  .heal-banner {
+    background: rgba(200,75,75,0.12);
+    border: 1px solid rgba(200,75,75,0.3);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--heal);
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0.75rem 0;
+  }
+
+  /* Skipped gyms */
+  .skipped-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-top: 2rem;
+  }
+  .skipped-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  .skipped-gym {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+  .skipped-gym-name { font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+  .skipped-reason { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.3rem; }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .sidebar { display: none; }
+    .main { padding: 1rem 1rem 3rem; }
+  }
+
+  /* Type colors */
+  .t-psychic  { background: rgba(200,100,200,0.15); color: #cc88cc; }
+  .t-fire     { background: rgba(220,100,50,0.15); color: #dd7744; }
+  .t-fighting { background: rgba(200,80,80,0.15); color: #cc6655; }
+  .t-electric { background: rgba(200,180,50,0.15); color: #ccbb33; }
+  .t-rock     { background: rgba(150,130,80,0.15); color: #aa9966; }
+  .t-flying   { background: rgba(100,150,220,0.15); color: #7799cc; }
+  .t-water    { background: rgba(60,120,220,0.15); color: #5588dd; }
+  .t-ice      { background: rgba(80,200,220,0.15); color: #55ccdd; }
+  .t-grass    { background: rgba(80,180,100,0.15); color: #55aa66; }
+  .t-normal   { background: rgba(150,150,150,0.15); color: #999999; }
+  .t-poison   { background: rgba(150,80,200,0.15); color: #aa66cc; }
+  .t-ground   { background: rgba(180,140,80,0.15); color: #bb9955; }
+  .t-dragon   { background: rgba(80,80,200,0.15); color: #6666cc; }
+  .t-bug      { background: rgba(100,160,60,0.15); color: #77aa44; }
+  .t-steel    { background: rgba(150,160,180,0.15); color: #99aabb; }
+  .t-ghost    { background: rgba(100,80,150,0.15); color: #8866aa; }
+  .t-mixed    { background: rgba(120,120,120,0.15); color: #999; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="flame">🔥</span>
+  <div>
+    <div class="h1">7 Hells – PokeMMO Gym Rerun</div>
+    <div class="sub">Featuring Meloetta · Full route guide</div>
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- Sidebar -->
+<nav class="sidebar" aria-label="Route navigation">
+  <div class="nav-region">
+    <span class="nav-region-label">Hoenn</span>
+    <a class="nav-link optional-link" href="#mossdeep">Optional) Mossdeep</a>
+    <a class="nav-link" href="#lavaridge">1. Lavaridge</a>
+    <a class="nav-link" href="#dewford">2. Dewford</a>
+    <a class="nav-link" href="#mauville">3. Mauville</a>
+    <a class="nav-link" href="#rustboro">4. Rustboro</a>
+    <a class="nav-link" href="#fortree">5. Fortree</a>
+    <a class="nav-link optional-link" href="#sootopolis">Optional) Sootopolis</a>
+  </div>
+  <div class="nav-region">
+    <span class="nav-region-label">Kanto</span>
+    <a class="nav-link" href="#vermillion">8. Vermillion</a>
+    <a class="nav-link" href="#cinnabar">9. Cinnabar</a>
+    <a class="nav-link" href="#pewter">10. Pewter</a>
+    <a class="nav-link" href="#saffron">11. Saffron</a>
+    <a class="nav-link" href="#celadon">12. Celadon</a>
+    <a class="nav-link" href="#fuchsia">13. Fuchsia</a>
+  </div>
+  <div class="nav-region">
+    <span class="nav-region-label">Sinnoh</span>
+    <a class="nav-link" href="#pastoria">14. Pastoria</a>
+    <a class="nav-link" href="#veilstone">15. Veilstone</a>
+    <a class="nav-link" href="#eterna">16. Eterna</a>
+    <a class="nav-link" href="#oreburgh">17. Oreburgh</a>
+    <a class="nav-link" href="#sunyshore">18. Sunyshore</a>
+  </div>
+  <div class="nav-region">
+    <span class="nav-region-label">Unova</span>
+    <a class="nav-link" href="#castelia">19. Castelia</a>
+    <a class="nav-link optional-link" href="#driftveil">Optional) Driftveil</a>
+    <a class="nav-link" href="#striaton-fire">20. Striaton (Fire)</a>
+    <a class="nav-link" href="#striaton-grass">21. Striaton (Grass)</a>
+    <a class="nav-link" href="#striaton-water">22. Striaton (Water)</a>
+    <a class="nav-link" href="#opelucid">23. Opelucid</a>
+    <a class="nav-link" href="#icirrus">24. Icirrus</a>
+    <a class="nav-link" href="#mistralton">25. Mistralton</a>
+    <a class="nav-link" href="#nimbasa">26. Nimbasa</a>
+  </div>
+  <div class="nav-region">
+    <span class="nav-region-label">Johto</span>
+    <a class="nav-link" href="#goldenrod">27. Goldenrod</a>
+    <a class="nav-link" href="#azalea">28. Azalea</a>
+    <a class="nav-link" href="#violet">29. Violet</a>
+    <a class="nav-link" href="#mahogany">30. Mahogany</a>
+    <a class="nav-link" href="#cianwood">31. Cianwood</a>
+    <a class="nav-link optional-link" href="#olivine">32. Olivine (opt.)</a>
+    <a class="nav-link optional-link" href="#blackthorn">33. Blackthorn (opt.)</a>
+  </div>
+  <div class="nav-region">
+    <span class="nav-region-label">Info</span>
+    <a class="nav-link" href="#skipped">Skipped Gyms</a>
+  </div>
+</nav>
+
+<!-- Main -->
+<main class="main">
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-title">Color legend</div>
+    <div class="legend-item"><span class="legend-pill pill-yellow">Yellow</span> Optional — does not significantly affect outcome</div>
+    <div class="legend-item"><span class="legend-pill pill-green">Green</span> Required for a 3-turn solve</div>
+    <div class="legend-item"><span class="legend-pill pill-red">Red</span> Potentially better but untested / small sample</div>
+    <div class="legend-item"><span class="legend-pill pill-blue">Blue</span> Optional gym — include if time allows</div>
+  </div>
+
+  <!-- Team -->
+  <div class="team-bar">
+    <div class="team-bar-title">Team — 7 Hells (Meloetta Edition)</div>
+    <div class="team-members">
+      <div class="team-mon">Meloetta <span>(Melo)</span></div>
+      <div class="team-mon">Typhlosion <span>(Typh)</span></div>
+      <div class="team-mon">Blastoise <span>(Blast)</span></div>
+      <div class="team-mon">Vanilluxe <span>(Vanil)</span></div>
+      <div class="team-mon">Aerodactyl <span>(Aero)</span></div>
+      <div class="team-mon">Excadrill <span>(Exca)</span></div>
+      <div class="team-mon">Togekiss <span>(Toge)</span></div>
+    </div>
+  </div>
+
+  <div class="note-bar">
+    <b>Item note:</b> When "X.Item + N.Mon" appears, use the X-Item <em>on the named Pokémon</em>, not on that Pokémon's own turn — unless stated otherwise.<br>
+    <b>Meloetta</b> starts the entire route with <b>Choice Specs</b>. After Fuchsia (Kanto), swap her back to <b>Choice Scarf</b> for Sinnoh onward. After Sinnoh she goes back to <b>Choice Specs</b> and stays there.
+  </div>
+
+  <!-- ═══════════════ HOENN ═══════════════ -->
+  <section class="region-section" id="hoenn">
+    <div class="region-header">
+      <span class="region-badge badge-hoenn">Hoenn</span>
+      <span class="region-title">Hoenn</span>
+    </div>
+
+    <!-- Optional Mossdeep -->
+    <div class="gym-card optional" id="mossdeep">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">opt</span>
+        <span class="gym-name">Mossdeep City</span>
+        <span class="gym-type t-psychic">Psychic</span>
+        <span class="gym-leads">Aero + Exca</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <div class="lead-label">Default lead</div>
+            <span class="leads-bold">Aero + Exca</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Exca dies</div>
+            Send out <span class="mon">Blast</span>. If Aero then dies to Destiny Bond → send out <span class="mon">Typh</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1 Lavaridge -->
+    <div class="gym-card" id="lavaridge">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">1</span>
+        <span class="gym-name">Lavaridge Town</span>
+        <span class="gym-type t-fire">Fire</span>
+        <span class="gym-leads">Melo [Specs] + Blast</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <div class="lead-label">Default</div>
+            <span class="leads-bold">Melo [Specs] + Blast</span><br>
+            <span class="move">Helping Hand</span> + <span class="move">Water Spout</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Torkoal &amp; Houndoom lead</div>
+            Use <span class="move">Hyper Voice</span> + <span class="move">Water Spout</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Level 85 Arcanine is present</div>
+            <span class="item-use">X.SpA on Blastoise</span>, then <span class="move">Hyper Voice</span> + <span class="move">Water Spout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 Dewford -->
+    <div class="gym-card" id="dewford">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">2</span>
+        <span class="gym-name">Dewford Town</span>
+        <span class="gym-type t-fighting">Fighting</span>
+        <span class="gym-leads">Melo [Specs] + Blast</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo [Specs] + Blast</span> — standard sweep.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Mauville -->
+    <div class="gym-card" id="mauville">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">3</span>
+        <span class="gym-name">Mauville City</span>
+        <span class="gym-type t-electric">Electric</span>
+        <span class="gym-leads">Melo [Specs] + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo [Specs] + Typh</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Electrode leads</div>
+            <span class="turn-label">T1.1</span> <span class="item-use">X.Spe on Typh</span><br>
+            <span class="turn-label">T1.2</span> <span class="move">Eruption</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Rustboro -->
+    <div class="gym-card" id="rustboro">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">4</span>
+        <span class="gym-name">Rustboro City</span>
+        <span class="gym-type t-rock">Rock</span>
+        <span class="gym-leads">Aero + Exca</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Exca</span> — standard sweep.
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Tyranitar + Probopass OR Tyranitar + Relicanth lead</div>
+            <span class="item-use">X.Speed on Exca</span> + <span class="move">Earthquake</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Fortree -->
+    <div class="gym-card" id="fortree">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">5</span>
+        <span class="gym-name">Fortree City</span>
+        <span class="gym-type t-flying">Flying</span>
+        <span class="gym-leads">Aero + Vanil</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Vanil</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Altaria leads</div>
+            <span class="item-use">X.Accuracy</span> + <span class="move">Blizzard</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Pelipper leads</div>
+            <span class="turn-label">T1</span> <span class="move">Rock Slide</span> + <span class="move">Icy Wind</span><br>
+            <span class="turn-label">T2</span> <span class="move">Rock Slide</span> + <span class="item-use">X.Atk on Aero</span><br>
+            <span class="turn-label">T3</span> <span class="move">Rock Slide</span> + <span class="item-use">X.Accuracy on Aero</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Masquerain + Gyarados lead</div>
+            <span class="turn-label">T1.1</span> <span class="item-use">X.SpA</span> &nbsp; <span class="turn-label">T1.2</span> <span class="move">Blizzard</span><br>
+            <span class="turn-label">T2.1</span> <span class="item-use">X.Accuracy</span> &nbsp; <span class="turn-label">T2.2</span> <span class="move">Blizzard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional Sootopolis -->
+    <div class="gym-card optional" id="sootopolis">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">opt</span>
+        <span class="gym-name">Sootopolis City</span>
+        <span class="gym-type t-water">Water</span>
+        <span class="gym-leads">Aero or Typh + Melo [Specs]</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="note-bar" style="margin-top:0.75rem;margin-bottom:0;">
+          Requires <b>Aerodactyl</b> or <b>Typhlosion</b> to know the egg move <b>Foresight</b>. Use a repel here (and in Kanto) for a smooth transition. Always swap Melo back to <b>Choice Scarf</b> before Kanto.
+        </div>
+        <div class="solve" style="margin-top:0.5rem;">
+          <div class="solve-default">
+            <span class="leads-bold">Aero or Typh + Melo [Specs]</span><br>
+            <span class="turn-label">T1.1</span> <span class="item-use">X.SpA on Melo</span> + <span class="move">Hyper Voice</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Lapras or Vaporeon</div>
+            <span class="item-use">X.SpA on Melo</span> + <span class="move">Hyper Voice</span><br>
+            <span class="turn-label">T2</span> <span class="move">Foresight</span> + <span class="move">Hyper Voice</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If rain is up</div>
+            Let <span class="mon">Aero / Typh</span> die, send in <span class="mon">Vanil</span>
+          </div>
+          <div class="branch branch-yellow">
+            <div class="branch-label">If Corsola appears T2</div>
+            Another <span class="item-use">X.SpA on Melo</span>. If <span class="mon">Typh</span> is still on field, use <span class="move">Helping Hand</span> instead.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heal-banner">⬆ Heal after Hoenn before every region switch</div>
+  </section>
+
+  <!-- ═══════════════ KANTO ═══════════════ -->
+  <section class="region-section" id="kanto">
+    <div class="region-header">
+      <span class="region-badge badge-kanto">Kanto</span>
+      <span class="region-title">Kanto</span>
+    </div>
+    <div class="note-bar">Melo uses <b>Choice Scarf</b> for all of Kanto. After Fuchsia, switch her back to <b>Choice Specs</b>.</div>
+
+    <!-- 8 Vermillion -->
+    <div class="gym-card" id="vermillion">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">8</span>
+        <span class="gym-name">Vermillion City</span>
+        <span class="gym-type t-electric">Electric</span>
+        <span class="gym-leads">Melo [Scarf] + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo [Scarf] + Typh</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Rain or Electrode on field</div>
+            <span class="move">Hyper Voice</span> + <span class="item-use">X.SpA on Typh</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">Otherwise</div>
+            <span class="move">Hyper Voice</span> + <span class="move">Incinerate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 Cinnabar -->
+    <div class="gym-card" id="cinnabar">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">9</span>
+        <span class="gym-name">Cinnabar Island</span>
+        <span class="gym-type t-fire">Fire</span>
+        <span class="gym-leads">Aero + Blast</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Blast</span><br>
+            <span class="turn-label">T1</span> Swap <span class="mon">Aero → Vanil</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">UNLESS Torkoal + Moltres lead</div>
+            <span class="turn-label">T1.1</span> <span class="item-use">X.SpA on Blast</span> + <span class="move">Water Spout</span><br>
+            <span class="turn-label">T2.1</span> <span class="move">Rock Slide</span> &nbsp; <span class="turn-label">T2.2</span> <span class="item-use">X.Atk on Aero</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 Pewter -->
+    <div class="gym-card" id="pewter">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">10</span>
+        <span class="gym-name">Pewter City</span>
+        <span class="gym-type t-rock">Rock</span>
+        <span class="gym-leads">Aero + Exca</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Exca</span> — standard sweep.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 Saffron -->
+    <div class="gym-card" id="saffron">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">11</span>
+        <span class="gym-name">Saffron City</span>
+        <span class="gym-type t-psychic">Psychic</span>
+        <span class="gym-leads">Full HP Aero + Exca</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Full HP Aero + Exca</span> — standard sweep.
+          </div>
+          <div class="branch branch-yellow">
+            <div class="branch-label">If Furret uses Protect</div>
+            <span class="cond">¿? — figure it out on the fly :)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 Celadon -->
+    <div class="gym-card" id="celadon">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">12</span>
+        <span class="gym-name">Celadon City</span>
+        <span class="gym-type t-grass">Grass</span>
+        <span class="gym-leads">Aero [X.SpA] + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero</span> (with <span class="item-use">X.SpA applied</span>) <span class="leads-bold">+ Typh</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Dragonite or Whimsicott leads</div>
+            Let <span class="mon">Aero</span> die, switch in <span class="mon">Vanil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13 Fuchsia -->
+    <div class="gym-card" id="fuchsia">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">13</span>
+        <span class="gym-name">Fuchsia City</span>
+        <span class="gym-type t-poison">Poison</span>
+        <span class="gym-leads">Aero + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="note-bar" style="margin-top:0.75rem;margin-bottom:0.5rem;">Switch Melo's item to <b>Choice Scarf</b> before this gym.</div>
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Typh</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Melo [Scarf] was Red Carded in and Gengar is on field</div>
+            <span class="move">Shadow Ball / Psych Up on Gengar</span> + <span class="move">Eruption</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Exca gets Red Carded in</div>
+            <span class="mon">Exca</span> uses <span class="move">Rock Slide</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">Gopher's moment</div>
+            <span class="mon">Gopher</span> uses <span class="move">Earthquake</span> to knock out Typh
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-bar">After Kanto: set Melo back to <b>Choice Specs</b> — keep it there for the rest of the run.</div>
+    <div class="heal-banner">⬆ Heal after every region</div>
+  </section>
+
+  <!-- ═══════════════ SINNOH ═══════════════ -->
+  <section class="region-section" id="sinnoh">
+    <div class="region-header">
+      <span class="region-badge badge-sinnoh">Sinnoh</span>
+      <span class="region-title">Sinnoh</span>
+    </div>
+
+    <!-- 14 Pastoria -->
+    <div class="gym-card" id="pastoria">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">14</span>
+        <span class="gym-name">Pastoria City</span>
+        <span class="gym-type t-water">Water</span>
+        <span class="gym-leads">Aero + Melo</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Melo</span><br>
+            <span class="turn-label">T2</span> <b>ALWAYS</b> use <span class="item-use">X.SpA on Melo</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Sharpedo + Any leads</div>
+            <span class="move">Rock Slide</span> + <span class="move">Hyper Voice</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If anything but Sharpedo leads</div>
+            <span class="item-use">X.SpA on Melo</span> + <span class="move">Hyper Voice</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If rain is up (when Aero KO'd)</div>
+            Switch in <span class="mon">Vanil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15 Veilstone -->
+    <div class="gym-card" id="veilstone">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">15</span>
+        <span class="gym-name">Veilstone City</span>
+        <span class="gym-type t-fighting">Fighting</span>
+        <span class="gym-leads">Aero + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Typh</span><br>
+            Use <span class="move">Aero Sunny Day</span>, then <span class="move">Rock Slide</span> after sun is up.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16 Eterna -->
+    <div class="gym-card" id="eterna">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">16</span>
+        <span class="gym-name">Eterna City</span>
+        <span class="gym-type t-grass">Grass</span>
+        <span class="gym-leads">Melo + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Typh</span> — standard sweep.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17 Oreburgh -->
+    <div class="gym-card" id="oreburgh">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">17</span>
+        <span class="gym-name">Oreburgh City</span>
+        <span class="gym-type t-rock">Rock</span>
+        <span class="gym-leads">Aero + Exca</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="branch branch-default">
+            <div class="branch-label">If Excadrill + Gigalith lead</div>
+            <span class="move">Rock Slide</span> + <span class="move">Earthquake</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Tyranitar + Excadrill lead</div>
+            <span class="move">Protect</span> + <span class="move">Earthquake</span><br>
+            <span class="cond">(Exca must have high def IVs — not to bait EQ on itself)</span>
+          </div>
+          <div class="branch branch-red">
+            <div class="branch-label">Risky gamble variant (Ttar + Exca)</div>
+            <span class="move">Rock Slide</span> + <span class="move">Earthquake</span> — needs 31 HP / 31 Def for a 3-turn solve. Small chance.
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Tyranitar + Probopass lead</div>
+            <span class="cond">Salamence team — always a 4-turn solve.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18 Sunyshore -->
+    <div class="gym-card" id="sunyshore">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">18</span>
+        <span class="gym-name">Sunyshore City</span>
+        <span class="gym-type t-electric">Electric</span>
+        <span class="gym-leads">Melo + Blast</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Blast</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Lanturn</div>
+            <span class="move">Hyper Voice</span> + <span class="item-use">X.SpA on Blast</span>
+          </div>
+          <div class="branch branch-yellow">
+            <div class="branch-label">Speed note</div>
+            Small chance of Melo being outsped — irrelevant, ignore it.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heal-banner">⬆ Heal after Sinnoh</div>
+  </section>
+
+  <!-- ═══════════════ UNOVA ═══════════════ -->
+  <section class="region-section" id="unova">
+    <div class="region-header">
+      <span class="region-badge badge-unova">Unova</span>
+      <span class="region-title">Unova</span>
+    </div>
+
+    <!-- 19 Castelia -->
+    <div class="gym-card" id="castelia">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">19</span>
+        <span class="gym-name">Castelia City</span>
+        <span class="gym-type t-bug">Bug</span>
+        <span class="gym-leads">Vanil + Blast</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Vanil + Blast</span> — standard sweep.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional Driftveil -->
+    <div class="gym-card optional" id="driftveil">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">opt</span>
+        <span class="gym-name">Driftveil City</span>
+        <span class="gym-type t-ground">Ground</span>
+        <span class="gym-leads">Vanil + Blast</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="note-bar" style="margin-top:0.75rem;margin-bottom:0.5rem;">Use <b>Leppa Berries</b> on Water Spout and Blizzard after this gym.</div>
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Vanil + Blast</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If sand is up</div>
+            <span class="item-use">X.Speed on Blastoise</span> + <span class="move">Water Spout</span>, then <span class="mon">Vanil</span> uses <span class="move">Icy Wind</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Sableye on field</div>
+            <span class="item-use">X.SpA on Vanil</span> + <span class="move">Blizzard</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Seismitoad appears T2</div>
+            Same: <span class="item-use">X.SpA on Vanil</span> + <span class="move">Blizzard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 20 Striaton Fire -->
+    <div class="gym-card" id="striaton-fire">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">20</span>
+        <span class="gym-name">Striaton – Fire (Chili)</span>
+        <span class="gym-type t-fire">Fire</span>
+        <span class="gym-leads">Melo + Blast</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Blast</span><br>
+            <span class="move">Helping Hand</span> + <span class="move">Water Spout</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Ninetales or Typhlosion leads</div>
+            <span class="item-use">X.SpA on Blast</span> + <span class="move">Water Spout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 21 Striaton Grass -->
+    <div class="gym-card" id="striaton-grass">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">21</span>
+        <span class="gym-name">Striaton – Grass (Cilan)</span>
+        <span class="gym-type t-grass">Grass</span>
+        <span class="gym-leads">Melo + Typh [Incinerate]</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Typh</span> — Typh uses <span class="move">Incinerate</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 22 Striaton Water -->
+    <div class="gym-card" id="striaton-water">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">22</span>
+        <span class="gym-name">Striaton – Water (Cress)</span>
+        <span class="gym-type t-water">Water</span>
+        <span class="gym-leads">Melo + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Typh</span><br>
+            <span class="move">Hyper Voice</span> + <span class="move">Eruption</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 23 Opelucid -->
+    <div class="gym-card" id="opelucid">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">23</span>
+        <span class="gym-name">Opelucid City</span>
+        <span class="gym-type t-dragon">Dragon</span>
+        <span class="gym-leads">Vanil + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Vanil + Typh</span> — standard sweep.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 24 Icirrus -->
+    <div class="gym-card" id="icirrus">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">24</span>
+        <span class="gym-name">Icirrus City</span>
+        <span class="gym-type t-ice">Ice</span>
+        <span class="gym-leads">Aero + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Typh</span><br>
+            Use <span class="move">Aero Sunny Day</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 25 Mistralton -->
+    <div class="gym-card" id="mistralton">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">25</span>
+        <span class="gym-name">Mistralton City</span>
+        <span class="gym-type t-flying">Flying</span>
+        <span class="gym-leads">Blast [Blizzard] + Vanil [Icy Wind]</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Blast [Blizzard] + Vanil [Icy Wind]</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If no Whimsicott or Skarmory leads</div>
+            <span class="move">Blast Blizzard</span> + <span class="item-use">X.SpA on Blast</span>
+          </div>
+          <div class="branch branch-green">
+            <div class="branch-label">For 3-turn solve guarantee</div>
+            Use Double Blizzard whenever possible, or reload PP with Leppas.
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If you did Driftveil</div>
+            Just spam <span class="move">Blizzard</span> + <span class="move">Water Spout</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 26 Nimbasa -->
+    <div class="gym-card" id="nimbasa">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">26</span>
+        <span class="gym-name">Nimbasa City</span>
+        <span class="gym-type t-electric">Electric</span>
+        <span class="gym-leads">Melo + Typh [Incinerate / Eruption]</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Typh</span><br>
+            Typh uses <span class="move">Incinerate</span> (or <span class="move">Eruption</span> when PP allows).
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Ampharos or Milotic</div>
+            <span class="move">Hyper Voice</span> + <span class="item-use">X.SpA on Typh</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heal-banner">⬆ Heal after Unova</div>
+  </section>
+
+  <!-- ═══════════════ JOHTO ═══════════════ -->
+  <section class="region-section" id="johto">
+    <div class="region-header">
+      <span class="region-badge badge-johto">Johto</span>
+      <span class="region-title">Johto</span>
+    </div>
+
+    <!-- 27 Goldenrod -->
+    <div class="gym-card" id="goldenrod">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">27</span>
+        <span class="gym-name">Goldenrod City</span>
+        <span class="gym-type t-normal">Normal</span>
+        <span class="gym-leads">Melo + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Typh</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Minccino + Miltank lead</div>
+            Swap both to <span class="mon">Aero + Exca</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 28 Azalea -->
+    <div class="gym-card" id="azalea">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">28</span>
+        <span class="gym-name">Azalea Town</span>
+        <span class="gym-type t-bug">Bug</span>
+        <span class="gym-leads">Aero + Typh [Incinerate]</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Typh</span> — Typh uses <span class="move">Incinerate</span>. Buckle up:
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Yanmega or Butterfree lead (Quagsire team)</div>
+            <span class="move">Rock Slide</span> + <span class="move">Eruption</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Beedrill or Forretress lead</div>
+            Swap both to <span class="mon">Aero + Exca</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 29 Violet -->
+    <div class="gym-card" id="violet">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">29</span>
+        <span class="gym-name">Violet City</span>
+        <span class="gym-type t-flying">Flying</span>
+        <span class="gym-leads">Blast + Vanil</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Blast + Vanil</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Pelipper or Zapdos</div>
+            <span class="item-use">X.SpA on Blast</span> + <span class="move">Water Spout</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 30 Mahogany -->
+    <div class="gym-card" id="mahogany">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">30</span>
+        <span class="gym-name">Mahogany Town</span>
+        <span class="gym-type t-ice">Ice</span>
+        <span class="gym-leads">Aero + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Typh</span><br>
+            Use <span class="move">Aero Sunny Day</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 31 Cianwood -->
+    <div class="gym-card" id="cianwood">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">31</span>
+        <span class="gym-name">Cianwood City</span>
+        <span class="gym-type t-fighting">Fighting</span>
+        <span class="gym-leads">Melo + Typh</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Melo + Typh</span>
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Machamp or Hitmontop [+ Donphan L71]</div>
+            <span class="move">Hyper Voice</span> + <span class="item-use">X.SpA on Typh</span><br>
+            <span class="turn-label">T2.1</span> <span class="move">Hyper Voice</span> &nbsp; <span class="turn-label">T2.2</span> <span class="move">Eruption</span>
+          </div>
+          <div class="branch branch-green">
+            <div class="branch-label">For 3-turn solve guarantee</div>
+            Always use <span class="item-use">X.SpA T1</span> to guarantee OHKO on all variants, then use <span class="move">Helping Hand</span> if Donphan or Rhyperior are NOT on the field.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 32 Olivine (optional) -->
+    <div class="gym-card optional" id="olivine">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">32</span>
+        <span class="gym-name">Olivine City</span>
+        <span class="gym-type t-steel">Steel</span>
+        <span class="gym-leads">Blast + Typh [Eruption when possible]</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="note-bar" style="margin-top:0.75rem;margin-bottom:0.5rem;">Heal before this optional gym.</div>
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Blast + Typh</span> — Typh uses <span class="move">Eruption</span> when PP available.
+          </div>
+          <div class="branch branch-default">
+            <div class="branch-label">If Rapidash</div>
+            <span class="item-use">X.SpA on Blastoise</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 33 Blackthorn (optional) -->
+    <div class="gym-card optional" id="blackthorn">
+      <div class="gym-header" onclick="toggle(this)">
+        <span class="gym-num">33</span>
+        <span class="gym-name">Blackthorn City</span>
+        <span class="gym-type t-dragon">Dragon</span>
+        <span class="gym-leads">Aero + Melo</span>
+        <span class="gym-toggle">▶</span>
+      </div>
+      <div class="gym-body">
+        <div class="note-bar" style="margin-top:0.75rem;margin-bottom:0.5rem;">Heal before this optional gym.</div>
+        <div class="solve">
+          <div class="solve-default">
+            <span class="leads-bold">Aero + Melo</span><br>
+            <span class="turn-label">T1</span> Always <span class="item-use">X.SpA on Melo</span>, then let <span class="mon">Aero</span> die → send in <span class="mon">Vanil</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="heal-banner">⬆ Heal after Johto</div>
+  </section>
+
+  <!-- ═══════════════ SKIPPED GYMS ═══════════════ -->
+  <section class="skipped-section" id="skipped">
+    <div class="skipped-title">Skipped Gyms</div>
+    <p style="font-size:0.83rem;color:var(--muted);margin-bottom:1rem;">Omitted from the main route because they ruin momentum, have longer puzzles, more RNG, or aren't fully scouted. Beat them if you have remaining time.</p>
+
+    <div class="skipped-gym">
+      <div class="skipped-gym-name">Hoenn — Petalburg City <span style="font-size:0.78rem;font-weight:400;color:var(--muted)">[Normal]</span></div>
+      <div><span class="leads-bold" style="font-size:0.84rem;">Toge + Typh</span></div>
+      <div style="font-size:0.84rem;margin-top:0.3rem;">If Chansey / Blissey on field: swap <span class="mon">Typh → Exca</span></div>
+      <div class="skipped-reason">Meloetta can't 1-shot Blissey, and Typhlosion can't 1-shot Slaking. Needs further testing.</div>
+    </div>
+
+    <div class="skipped-gym">
+      <div class="skipped-gym-name">Sinnoh — Canalave City <span style="font-size:0.78rem;font-weight:400;color:var(--muted)">[Steel]</span></div>
+      <div><span class="leads-bold" style="font-size:0.84rem;">Aero + Exca</span></div>
+      <div style="font-size:0.84rem;margin-top:0.3rem;">
+        Sand up → <span class="move">Aero Sunny Day</span><br>
+        Rain up → swap both to <span class="mon">Vanil + Blast</span><br>
+        Skarmory / Moltres → swap both to <span class="mon">Vanil + Blast</span>
+      </div>
+      <div class="skipped-reason">Terrible RNG + Flash Fire mons + Level 71 variants. Too many branches for blind runs. Scout first if you want to include it.</div>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script>
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const icon = header.querySelector('.gym-toggle');
+  const open = body.classList.toggle('open');
+  icon.classList.toggle('open', open);
+}
+
+// Sidebar active link highlight on scroll
+const sections = document.querySelectorAll('[id]');
+const links = document.querySelectorAll('.nav-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector('.nav-link[href="#' + e.target.id + '"]');
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
