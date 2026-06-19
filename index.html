@@ -179,18 +179,34 @@
   .team-members {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 1.25rem;
+    align-items: flex-start;
   }
   .team-mon {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 3px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.15s;
+  }
+  .team-mon:hover {
+    opacity: 0.8;
+  }
+  .team-mon img {
+    width: 96px;
+    height: 96px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+  .team-mon-name {
     font-size: 0.82rem;
     font-weight: 500;
     color: var(--text);
   }
-  .team-mon span { color: var(--muted); font-size: 0.75rem; }
+  .team-mon-abbr { color: var(--muted); font-size: 0.72rem; }
   .note-bar {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -508,13 +524,41 @@
   <div class="team-bar">
     <div class="team-bar-title">Team — 7 Hells (Meloetta Edition)</div>
     <div class="team-members">
-      <div class="team-mon">Meloetta <span>(Melo)</span></div>
-      <div class="team-mon">Typhlosion <span>(Typh)</span></div>
-      <div class="team-mon">Blastoise <span>(Blast)</span></div>
-      <div class="team-mon">Vanilluxe <span>(Vanil)</span></div>
-      <div class="team-mon">Aerodactyl <span>(Aero)</span></div>
-      <div class="team-mon">Excadrill <span>(Exca)</span></div>
-      <div class="team-mon">Togekiss <span>(Toge)</span></div>
+      <a href="https://pokemondb.net/pokedex/meloetta" class="team-mon">
+        <img src="https://img.pokemondb.net/sprites/black-white/shiny/meloetta-aria.png" alt="Meloetta">
+        <div class="team-mon-name">Meloetta</div>
+        <div class="team-mon-abbr">Melo</div>
+      </a>
+      <a href="https://pokemondb.net/pokedex/typhlosion" class="team-mon">
+        <img src="https://img.pokemondb.net/sprites/black-white/shiny/typhlosion.png" alt="Typhlosion">
+        <div class="team-mon-name">Typhlosion</div>
+        <div class="team-mon-abbr">Typh</div>
+      </a>
+      <a href="https://pokemondb.net/pokedex/blastoise" class="team-mon">
+        <img src="https://img.pokemondb.net/sprites/black-white/shiny/blastoise.png" alt="Blastoise">
+        <div class="team-mon-name">Blastoise</div>
+        <div class="team-mon-abbr">Blast</div>
+      </a>
+      <a href="https://pokemondb.net/pokedex/vanilluxe" class="team-mon">
+        <img src="https://img.pokemondb.net/sprites/black-white/shiny/vanilluxe.png" alt="Vanilluxe">
+        <div class="team-mon-name">Vanilluxe</div>
+        <div class="team-mon-abbr">Vanil</div>
+      </a>
+      <a href="https://pokemondb.net/pokedex/aerodactyl" class="team-mon">
+        <img src="https://img.pokemondb.net/sprites/black-white/shiny/aerodactyl.png" alt="Aerodactyl">
+        <div class="team-mon-name">Aerodactyl</div>
+        <div class="team-mon-abbr">Aero</div>
+      </a>
+      <a href="https://pokemondb.net/pokedex/excadrill" class="team-mon">
+        <img src="https://img.pokemondb.net/sprites/black-white/shiny/excadrill.png" alt="Excadrill">
+        <div class="team-mon-name">Excadrill</div>
+        <div class="team-mon-abbr">Exca</div>
+      </a>
+      <a href="https://pokemondb.net/pokedex/togekiss" class="team-mon">
+        <img src="https://img.pokemondb.net/sprites/black-white/shiny/togekiss.png" alt="Togekiss">
+        <div class="team-mon-name">Togekiss</div>
+        <div class="team-mon-abbr">Toge</div>
+      </a>
     </div>
   </div>
 
@@ -1412,6 +1456,78 @@
 </div>
 
 <script>
+/*
+═══════════════════════════════════════════════════════════════════════════════
+HOW TO ADD SPRITES TO GYM CARDS
+═══════════════════════════════════════════════════════════════════════════════
+
+All Pokémon sprites come from the official Pokémon artwork database:
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{ID}.png
+
+Example: Meloetta = https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/648.png
+
+To add a sprite to a gym header, add this to the .gym-header div:
+<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{ID}.png" 
+     alt="Pokemon Name" style="width:32px; height:32px; margin-right:6px;">
+
+EXAMPLE - Adding a sprite to Mossdeep:
+Replace this:
+  <div class="gym-header" onclick="toggle(this)">
+    <span class="gym-num">opt</span>
+    <span class="gym-name">Mossdeep City</span>
+
+With this:
+  <div class="gym-header" onclick="toggle(this)">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/294.png" 
+         alt="Lati" style="width:32px; height:32px; margin-right:6px;">
+    <span class="gym-num">opt</span>
+    <span class="gym-name">Mossdeep City</span>
+
+═════════════════════════════════════════════════════════════════════════════════
+POKÉMON NUMBERS (for quick reference)
+═════════════════════════════════════════════════════════════════════════════════
+Meloetta = 648
+Typhlosion = 156
+Blastoise = 9
+Vanilluxe = 584
+Aerodactyl = 142
+Excadrill = 530
+Togekiss = 468
+
+Gym Leader Pokémon:
+Lapras = 131
+Arcanine = 59
+Electrode = 101
+Tyranitar = 248
+Probopass = 476
+Relicanth = 369
+Altaria = 334
+Pelipper = 279
+Masquerain = 326
+Gyarados = 130
+
+Common Gym Pokémon:
+Chansey = 113
+Blissey = 242
+Houndoom = 229
+Torkoal = 324
+Skarmory = 227
+Moltres = 146
+Lucario = 445
+Destiny Bond = (effect)
+Psych Up = (move)
+
+Gym Leaders (for future sprite additions):
+Flannery = 390 (trainer, doesn't have a static sprite)
+Brawly = 391 (trainer)
+Winona = 392 (trainer)
+
+Full Pokédex reference:
+https://pokeapi.co/api/v2/pokemon/{name-or-id}/
+
+═════════════════════════════════════════════════════════════════════════════════
+*/
+
 function toggle(header) {
   const body = header.nextElementSibling;
   const icon = header.querySelector('.gym-toggle');
