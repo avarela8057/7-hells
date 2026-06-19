@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:type" content="website">
     <title>7 Hells – PokeMMO Gym Rerun Guide</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
         body {
             font-family: Arial, sans-serif;
             background-color: #1a1a1a;
@@ -15,7 +13,6 @@
             line-height: 1.6;
             padding: 20px;
         }
-
         .sticky-div {
             position: sticky;
             top: 0;
@@ -25,20 +22,6 @@
             border-bottom: 2px solid #444;
             z-index: 100;
         }
-
-        .transparent-button {
-            background: none;
-            border: none;
-            color: #ff6b35;
-            text-decoration: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .transparent-button:hover {
-            color: #ff8c42;
-        }
-
         h1 {
             color: #ff6b35;
             font-size: 2.5rem;
@@ -46,20 +29,17 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-
         h2 {
             color: #ffb84d;
             font-size: 1.5rem;
             margin: 20px 0 10px;
         }
-
         .pokemon-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin: 20px 0;
         }
-
         .pokemon-card {
             background: #2a2a2a;
             border: 2px solid #444;
@@ -67,14 +47,12 @@
             padding: 15px;
             text-align: center;
         }
-
         .pokemon-card img {
             width: 120px;
             height: 120px;
             margin: 10px 0;
             image-rendering: pixelated;
         }
-
         .firepokemon-name { color: #ff6b35; font-weight: bold; }
         .waterpokemon-name { color: #4da6ff; font-weight: bold; }
         .icepokemon-name { color: #66d9ff; font-weight: bold; }
@@ -82,7 +60,16 @@
         .poisonpokemon-name { color: #cc66ff; font-weight: bold; }
         .normalpokemon-name { color: #cccccc; font-weight: bold; }
         .rockpokemon-name { color: #a68800; font-weight: bold; }
-
+        .caution-box {
+            background: #3a2a2a;
+            border: 3px solid #ff6b35;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+        .caution-box u { color: #ff6b35; font-size: 1.2rem; }
+        .caution-box b { color: #ffb84d; }
         .gym-card {
             background: #2a2a2a;
             border: 2px solid #444;
@@ -93,17 +80,14 @@
             gap: 20px;
             align-items: flex-start;
         }
-
         .gym-card img {
             width: 150px;
             height: auto;
             border-radius: 5px;
         }
-
         .gym-card div {
             flex: 1;
         }
-
         .fight-section {
             background: #1a1a1a;
             border-left: 4px solid #ff6b35;
@@ -111,14 +95,12 @@
             margin: 15px 0;
             border-radius: 5px;
         }
-
         .fight-section img {
             width: 60px;
             height: 60px;
             margin: 5px;
             image-rendering: pixelated;
         }
-
         .note {
             background: #2a2a2a;
             border-left: 4px solid #ffb84d;
@@ -127,21 +109,11 @@
             border-radius: 5px;
             font-style: italic;
         }
-
         hr {
             border: none;
             border-top: 2px solid #444;
             margin: 30px 0;
         }
-
-        u {
-            text-decoration: underline;
-        }
-
-        b {
-            font-weight: bold;
-        }
-
         .heal-banner {
             background: #4d0000;
             color: #ff6b6b;
@@ -154,7 +126,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         .credits-section {
             background: #2a2a2a;
             border: 2px solid #444;
@@ -162,24 +133,20 @@
             padding: 20px;
             margin: 40px 0;
         }
-
         .credits-title {
             color: #ff6b35;
             font-size: 1.3rem;
             margin-bottom: 15px;
             font-weight: bold;
         }
-
         .credit-item {
             margin: 10px 0;
             line-height: 1.8;
         }
-
         @media (max-width: 768px) {
             .gym-card {
                 flex-direction: column;
             }
-            
             .gym-card img {
                 width: 100%;
             }
@@ -254,814 +221,253 @@
         </section>
     </div>
 
-    <div class="note" style="background: #4d2a2a; border-left-color: #ff6b35; margin: 25px 0;">
-        <u><b>⚠️ IMPORTANT: X-Item Requirements</b></u> <br><br>
-        This full 33-gym route requires approximately <b>20-25 X-Items total</b> to execute all strategies optimally. <br><br>
+    <div class="caution-box">
+        <u><b>⚠️ CRITICAL: X-Item Requirements</b></u> <br><br>
+        <b>This full 33-gym route requires approximately 20-25 X-Items total</b> to execute all strategies optimally. Stock up BEFORE starting!<br><br>
         <b>Breakdown by type:</b><br>
-        • <b>X.SpA (Special Attack)</b> — ~16 uses (most common)<br>
+        • <b>X.SpA (Special Attack)</b> — ~16 uses (MOST CRITICAL)<br>
         • <b>X.Speed</b> — ~3 uses<br>
         • <b>X.Accuracy</b> — ~2 uses<br>
         • <b>X.Atk (Attack)</b> — ~2 uses<br>
         • <b>X.Special/Other</b> — ~2 uses<br>
         <br>
-        <b>Pro Tips:</b> Many X-Item uses occur in "If vs." branches (optional scenarios). Focus on stocking X.SpA items first as they're used most frequently. You can skip optional gyms (Driftveil, Olivine, Blackthorn) to reduce item consumption if needed.
+        <b style="color: #ffb84d;">💡 Pro Tips:</b> Many X-Item uses occur in "If vs." branches (optional scenarios). Prioritize stocking X.SpA items first. You can skip optional gyms (Driftveil, Olivine, Blackthorn) to reduce item consumption.
     </div>
 
     <h2 style="color: #ffb84d; margin-top: 40px;">HOENN</h2>
     <hr>
 
-    <!-- LAVARIDGE -->
     <h1>1. Lavaridge Town</h1>
     <div class="gym-card">  
         <img src="https://archives.bulbagarden.net/media/upload/9/93/Hoenn_Lavaridge_Town_Map.png" alt="Lavaridge">
         <div>
-            <u><b>Gym Leader: Flannery</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Flannery" style="width:80px;">
+            <u><b>Gym Leader: Flannery</b></u>
         </div>
     </div>
 
     <div class="fight-section">
         <b>Default Lead:</b> <span class="waterpokemon-name">Blastoise</span> + <span class="normalpokemon-name">Meloetta [Specs]</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta"> <br>
         <span class="waterpokemon-name">Water Spout</span> + <span class="normalpokemon-name">Helping Hand</span>
     </div>
 
     <div class="fight-section">
         <u style="color:#ff6b35;"><b>If vs. Torkoal &amp; Houndoom:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/torkoal.gif" alt="Torkoal"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/houndoom.gif" alt="Houndoom"><br>
         <span class="waterpokemon-name">Water Spout</span> + <span class="normalpokemon-name">Hyper Voice</span> 
     </div>
 
     <div class="fight-section">
         <u style="color:#ff6b35;"><b>If vs. Level 85 Arcanine:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/arcanine.gif" alt="Arcanine"><br>
-        <b>T1:</b> Use <span style="color:#ffb84d;">X.SpA on Blastoise</span> + <span class="normalpokemon-name">Hyper Voice</span> <br>
+        <b>T1:</b> <span style="color:#ffb84d;">X.SpA on Blastoise</span> + <span class="normalpokemon-name">Hyper Voice</span> <br>
         <b>T2:</b> <span class="waterpokemon-name">Water Spout</span> + <span class="normalpokemon-name">Hyper Voice</span>
     </div>
 
-    <div class="note"><u>Note:</u> Low chance of 4 turns. <span style="color:rgb(41, 238, 77)">Heal</span> if <span class="waterpokemon-name">Blastoise</span> is damaged.</div>
-
-    <!-- DEWFORD -->
     <h1>2. Dewford Town</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/d/d3/Hoenn_Dewford_Town_Map.png" alt="Dewford">
-        <div>
-            <u><b>Gym Leader: Brawly</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/machoke.gif" alt="Brawly" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="waterpokemon-name">Blastoise</span> + <span class="icepokemon-name">Vanilluxe</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe"> <br>
         <span class="waterpokemon-name">Water Spout</span> + <span class="icepokemon-name">Blizzard</span>
     </div>
 
-    <div class="note"><u>Note:</u> <span style="color:rgb(41, 238, 77)">Heal</span> if <span class="icepokemon-name">Vanilluxe</span> is low HP.</div>
-
-    <!-- MAUVILLE -->
     <h1>3. Mauville City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/a/a1/Hoenn_Mauville_City_Map.png" alt="Mauville">
-        <div>
-            <u><b>Gym Leader: Wattson</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/electrode.gif" alt="Wattson" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="firepokemon-name">Typhlosion [Specs]</span> + <span class="dragonpokemon-name">Excadrill</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Excadrill"> <br>
         <span class="firepokemon-name">Eruption</span> + <span class="dragonpokemon-name">Earthquake</span>
     </div>
 
     <div class="fight-section">
         <u style="color:#ff6b35;"><b>If Electrode leads:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/electrode.gif" alt="Electrode"><br>
         <b>T1.1:</b> <span style="color:#ffb84d;">X.Spe [Typhlosion]</span> <br>
         <b>T1.2:</b> <span class="firepokemon-name">Eruption</span>
     </div>
 
-    <!-- RUSTBORO -->
     <h1>4. Rustboro City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/c/c8/Hoenn_Rustboro_City_Map.png" alt="Rustboro">
-        <div>
-            <u><b>Gym Leader: Roxanne</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/probopass.gif" alt="Roxanne" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Default Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Excadrill"> <br>
         <span class="rockpokemon-name">Rock Slide</span> + <span class="dragonpokemon-name">Earthquake</span>
     </div>
 
     <div class="fight-section">
         <u style="color:#ff6b35;"><b>If Tyranitar + Probopass / Relicanth:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/tyranitar.gif" alt="Tyranitar"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/probopass.gif" alt="Probopass"><br>
         <span style="color:#ffb84d;">X.Speed [Excadrill]</span> + <span class="dragonpokemon-name">Earthquake</span>
     </div>
 
-    <!-- FORTREE -->
     <h1>5. Fortree City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/6/6a/Hoenn_Fortree_City_Map.png" alt="Fortree">
-        <div>
-            <u><b>Gym Leader: Winona</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/dragonite.gif" alt="Winona" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Default Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="icepokemon-name">Vanilluxe</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe"> <br>
         <span class="rockpokemon-name">Rock Slide</span> + <span class="icepokemon-name">Blizzard</span>
     </div>
 
     <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Altaria leads:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/altaria.gif" alt="Altaria"><br>
+        <u style="color:#ff6b35;"><b>If Altaria:</b></u> <br>
         <span style="color:#ffb84d;">X.Accuracy [Aerodactyl]</span> + <span class="icepokemon-name">Blizzard</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Pelipper leads:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/pelipper.gif" alt="Pelipper"><br>
-        <b>T1:</b> <span class="rockpokemon-name">Rock Slide</span> + <span class="icepokemon-name">Icy Wind</span> <br>
-        <b>T2:</b> <span class="rockpokemon-name">Rock Slide</span> + <span style="color:#ffb84d;">X.Atk [Aerodactyl]</span> <br>
-        <b>T3:</b> <span class="rockpokemon-name">Rock Slide</span> + <span style="color:#ffb84d;">X.Accuracy [Aerodactyl]</span>
     </div>
 
     <h1 style="color:rgb(41, 238, 77)">⬆ HEAL AFTER HOENN</h1>
 
-    <h2 style="color: #ffb84d; margin-top: 40px;">KANTO</h2>
+    <h2 style="color: #ffb84d;">KANTO</h2>
     <hr>
 
-    <!-- VERMILLION -->
     <h1>8. Vermillion City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/5/54/Kanto_Vermilion_City_Map.png" alt="Vermilion">
-        <div>
-            <u><b>Gym Leader: Lt. Surge</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/electrode.gif" alt="Lt. Surge" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="normalpokemon-name">Meloetta [Scarf]</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
         <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Incinerate</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Rain or Electrode on field:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/electrode.gif" alt="Electrode"><br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span style="color:#ffb84d;">X.SpA [Typhlosion]</span>
-    </div>
-
-    <!-- CINNABAR -->
     <h1>9. Cinnabar Island</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/5/58/Kanto_Cinnabar_Island_Map.png" alt="Cinnabar">
-        <div>
-            <u><b>Gym Leader: Blaine</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/arcanine.gif" alt="Blaine" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>T1 Action:</b> Swap <span class="rockpokemon-name">Aerodactyl → Vanilluxe</span> <br>
-        <span class="rockpokemon-name">Rock Slide</span> + <span class="waterpokemon-name">Water Spout</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise">
+        <b>Action:</b> Swap <span class="rockpokemon-name">Aerodactyl → Vanilluxe</span> <br>
+        <span class="rockpokemon-name">Rock Slide</span> + <span class="waterpokemon-name">Water Spout</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>UNLESS Torkoal + Moltres lead:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/torkoal.gif" alt="Torkoal"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/moltres.gif" alt="Moltres"><br>
-        <b>T1.1:</b> <span style="color:#ffb84d;">X.SpA [Blastoise]</span> <br>
-        <b>T1.2:</b> <span class="waterpokemon-name">Water Spout</span> <br>
-        <b>T2.1:</b> <span class="rockpokemon-name">Rock Slide</span> <br>
-        <b>T2.2:</b> <span style="color:#ffb84d;">X.Atk [Aerodactyl]</span>
-    </div>
-
-    <!-- PEWTER -->
     <h1>10. Pewter City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/8/8e/Kanto_Pewter_City_Map.png" alt="Pewter">
-        <div>
-            <u><b>Gym Leader: Brock</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/rhyperior.gif" alt="Brock" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Excadrill"> <br>
-        <span class="rockpokemon-name">Rock Slide</span> + <span class="dragonpokemon-name">Earthquake</span>
+        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span>
     </div>
 
-    <!-- SAFFRON -->
     <h1>11. Saffron City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/6/6a/Kanto_Saffron_City_Map.png" alt="Saffron">
-        <div>
-            <u><b>Gym Leader: Sabrina</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/espeon.gif" alt="Sabrina" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Requirement:</b> Full HP <span class="rockpokemon-name">Aerodactyl</span> <br>
         <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Excadrill"> <br>
         <span class="rockpokemon-name">Rock Slide</span> + <span class="dragonpokemon-name">Earthquake</span>
     </div>
 
-    <!-- CELADON -->
     <h1>12. Celadon City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/b/bd/Kanto_Celadon_City_Map.png" alt="Celadon">
-        <div>
-            <u><b>Gym Leader: Erika</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vileplume.gif" alt="Erika" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl [X.SpA applied]</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
         <span class="rockpokemon-name">Rock Slide</span> + <span class="firepokemon-name">Eruption</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Dragonite or Whimsicott leads:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/dragonite.gif" alt="Dragonite"><br>
-        Let <span class="rockpokemon-name">Aerodactyl</span> die, switch to <span class="icepokemon-name">Vanilluxe</span>
-    </div>
-
-    <!-- FUCHSIA -->
     <h1>13. Fuchsia City</h1>
-    <div class="gym-card">  
-        <img src="https://archives.bulbagarden.net/media/upload/4/41/Kanto_Fuchsia_City_Map.png" alt="Fuchsia">
-        <div>
-            <u><b>Gym Leader: Janine</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/weezing.gif" alt="Janine" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Important:</b> Switch Meloetta to <span style="color:#ffb84d;">Choice Scarf</span> before this gym <br>
-        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl"> 
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="rockpokemon-name">Rock Slide</span> + <span class="firepokemon-name">Eruption</span>
+        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <div class="note"><u>Note:</u> After Fuchsia, set Meloetta back to <span style="color:#ffb84d;">Choice Specs</span> for rest of run.</div>
+    <div class="note">After Fuchsia, set Meloetta back to <span style="color:#ffb84d;">Choice Specs</span></div>
 
     <h1 style="color:rgb(41, 238, 77)">⬆ HEAL AFTER KANTO</h1>
 
-    <h2 style="color: #ffb84d; margin-top: 40px;">SINNOH</h2>
+    <h2 style="color: #ffb84d;">SINNOH</h2>
     <hr>
 
-    <!-- PASTORIA -->
     <h1>14. Pastoria City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/b/ba/Sinnoh_Pastoria_City_Map.png" alt="Pastoria City">
-        <div>
-            <u><b>Gym Leader: Crasher Wake</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/floatzel.gif" alt="Crasher Wake" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="normalpokemon-name">Meloetta</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta"> <br>
         <b>T2: ALWAYS</b> use <span style="color:#ffb84d;">X.SpA [Meloetta]</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Sharpedo + Any leads:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/sharpedo.gif" alt="Sharpedo"><br>
-        <span class="rockpokemon-name">Rock Slide</span> + <span class="normalpokemon-name">Hyper Voice</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If anything but Sharpedo leads:</b></u><br>
-        <span style="color:#ffb84d;">X.SpA [Meloetta]</span> + <span class="normalpokemon-name">Hyper Voice</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If rain is up (when Aero is KO'd):</b></u><br>
-        Switch in <span class="icepokemon-name">Vanilluxe</span>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe">
-    </div>
-
-    <!-- VEILSTONE -->
     <h1>15. Veilstone City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/3/32/Sinnoh_Veilstone_City_Map.png" alt="Veilstone City">
-        <div>
-            <u><b>Gym Leader: Maylene</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/lucario.gif" alt="Maylene" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        Use <span class="rockpokemon-name">Sunny Day</span> with Aerodactyl. After sun is up, use <span class="rockpokemon-name">Rock Slide</span>.
+        Use <span class="rockpokemon-name">Sunny Day</span>, then <span class="rockpokemon-name">Rock Slide</span>
     </div>
 
-    <!-- ETERNA -->
     <h1>16. Eterna City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/0/0b/Sinnoh_Eterna_City_Map.png" alt="Eterna City">
-        <div>
-            <u><b>Gym Leader: Gardenia</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/roserade.gif" alt="Gardenia" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Eruption</span>
+        <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <!-- OREBURGH -->
     <h1>17. Oreburgh City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/c/c0/Sinnoh_Oreburgh_City_Map.png" alt="Oreburgh City">
-        <div>
-            <u><b>Gym Leader: Roark</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/rampardos.gif" alt="Roark" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Excadrill">
+        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Excadrill + Gigalith lead:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Excadrill">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/gigalith.gif" alt="Gigalith"><br>
-        <span class="rockpokemon-name">Rock Slide</span> + <span class="dragonpokemon-name">Earthquake</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Tyranitar + Excadrill lead:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/tyranitar.gif" alt="Tyranitar">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Excadrill"><br>
-        <span class="rockpokemon-name">Protect</span> + <span class="dragonpokemon-name">Earthquake</span> <br>
-        <div class="note" style="margin-top:8px;"><u>Note:</u> Excadrill must have high defensive IVs not to bait EQ. Small chance of surviving with Rock Slide + EQ — needs 31 HP / 31 Def.</div>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Tyranitar + Probopass lead:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/tyranitar.gif" alt="Tyranitar">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/probopass.gif" alt="Probopass"><br>
-        Salamence team — always a <b>4-turn solve</b>.
-    </div>
-
-    <!-- SUNYSHORE -->
     <h1>18. Sunyshore City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/7/74/Sinnoh_Sunyshore_City_Map.png" alt="Sunyshore City">
-        <div>
-            <u><b>Gym Leader: Volkner</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/luxray.gif" alt="Volkner" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="waterpokemon-name">Blastoise</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise"> <br>
         <span class="normalpokemon-name">Hyper Voice</span> + <span class="waterpokemon-name">Water Spout</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Lanturn:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/lanturn.gif" alt="Lanturn"><br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span style="color:#ffb84d;">X.SpA [Meloetta]</span>
-    </div>
-
-    <div class="note"><u>Note:</u> Small chance of Meloetta being outsped by some Pokémon — irrelevant, ignore it.</div>
-
     <h1 style="color:rgb(41, 238, 77)">⬆ HEAL AFTER SINNOH</h1>
 
-    <h2 style="color: #ffb84d; margin-top: 40px;">UNOVA</h2>
+    <h2 style="color: #ffb84d;">UNOVA</h2>
     <hr>
 
-    <!-- CASTELIA -->
     <h1>19. Castelia City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/9/96/Unova_Castelia_City_Map.png" alt="Castelia City">
-        <div>
-            <u><b>Gym Leader: Burgh</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/leavanny.gif" alt="Burgh" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="icepokemon-name">Vanilluxe</span> + <span class="waterpokemon-name">Blastoise</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise"> <br>
-        <span class="icepokemon-name">Blizzard</span> + <span class="waterpokemon-name">Water Spout</span>
+        <b>Lead:</b> <span class="icepokemon-name">Vanilluxe</span> + <span class="waterpokemon-name">Blastoise</span>
     </div>
 
-    <!-- DRIFTVEIL OPTIONAL -->
-    <h1 style="color:#5588cc;">[Optional] Driftveil City</h1>
-    <div class="gym-card" style="border-color: #5588cc;">
-        <img src="https://archives.bulbagarden.net/media/upload/2/2f/Unova_Driftveil_City_Map.png" alt="Driftveil City">
-        <div>
-            <u><b>Gym Leader: Clay</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/excadrill.gif" alt="Clay" style="width:80px;">
-        </div>
-    </div>
-
+    <h1 style="color:#5588cc;">20. Striaton City (All 3 Leaders)</h1>
     <div class="fight-section">
-        <b>Lead:</b> <span class="icepokemon-name">Vanilluxe</span> + <span class="waterpokemon-name">Blastoise</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise">
+        <b>Fire (Chili):</b> <span class="normalpokemon-name">Meloetta</span> + <span class="waterpokemon-name">Blastoise</span> <br>
+        <b>Grass (Cilan):</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span> <br>
+        <b>Water (Cress):</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If sand is up:</b></u><br>
-        <span style="color:#ffb84d;">X.Speed [Blastoise]</span> + <span class="waterpokemon-name">Water Spout</span>, then <span class="icepokemon-name">Vanilluxe</span> uses <span class="icepokemon-name">Icy Wind</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Sableye on field:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/sableye.gif" alt="Sableye"><br>
-        <span style="color:#ffb84d;">X.SpA [Vanilluxe]</span> + <span class="icepokemon-name">Blizzard</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Seismitoad appears T2:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/seismitoad.gif" alt="Seismitoad"><br>
-        <span style="color:#ffb84d;">X.SpA [Vanilluxe]</span> + <span class="icepokemon-name">Blizzard</span>
-    </div>
-
-    <div class="note"><u>Note:</u> Use <b>Leppa Berries</b> on Water Spout and Blizzard after this gym.</div>
-
-    <!-- STRIATON FIRE -->
-    <h1>20. Striaton City (Fire – Chili)</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/d/d7/Unova_Striaton_City_Map.png" alt="Striaton City">
-        <div>
-            <u><b>Gym Leader: Chili</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/simisear.gif" alt="Chili" style="width:80px;">
-        </div>
-    </div>
-
-    <div class="fight-section">
-        <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="waterpokemon-name">Blastoise</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise"> <br>
-        <span class="normalpokemon-name">Helping Hand</span> + <span class="waterpokemon-name">Water Spout</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Ninetales or Typhlosion leads:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/ninetales.gif" alt="Ninetales">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"><br>
-        <span style="color:#ffb84d;">X.SpA [Blastoise]</span> + <span class="waterpokemon-name">Water Spout</span>
-    </div>
-
-    <!-- STRIATON GRASS -->
-    <h1>21. Striaton City (Grass – Cilan)</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/d/d7/Unova_Striaton_City_Map.png" alt="Striaton City">
-        <div>
-            <u><b>Gym Leader: Cilan</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/simisage.gif" alt="Cilan" style="width:80px;">
-        </div>
-    </div>
-
-    <div class="fight-section">
-        <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion [Incinerate]</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Incinerate</span>
-    </div>
-
-    <!-- STRIATON WATER -->
-    <h1>22. Striaton City (Water – Cress)</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/d/d7/Unova_Striaton_City_Map.png" alt="Striaton City">
-        <div>
-            <u><b>Gym Leader: Cress</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/simipour.gif" alt="Cress" style="width:80px;">
-        </div>
-    </div>
-
-    <div class="fight-section">
-        <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Eruption</span>
-    </div>
-
-    <!-- OPELUCID -->
     <h1>23. Opelucid City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/3/3d/Unova_Opelucid_City_Map.png" alt="Opelucid City">
-        <div>
-            <u><b>Gym Leader: Iris / Drayden</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/haxorus.gif" alt="Iris" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="icepokemon-name">Vanilluxe</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="icepokemon-name">Blizzard</span> + <span class="firepokemon-name">Eruption</span>
+        <b>Lead:</b> <span class="icepokemon-name">Vanilluxe</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <!-- ICIRRUS -->
     <h1>24. Icirrus City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/8/83/Unova_Icirrus_City_Map.png" alt="Icirrus City">
-        <div>
-            <u><b>Gym Leader: Brycen</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/beartic.gif" alt="Brycen" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        Use <span class="rockpokemon-name">Aero Sunny Day</span>, then <span class="rockpokemon-name">Rock Slide</span> + <span class="firepokemon-name">Eruption</span>
+        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <!-- MISTRALTON -->
     <h1>25. Mistralton City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/6/62/Unova_Mistralton_City_Map.png" alt="Mistralton City">
-        <div>
-            <u><b>Gym Leader: Skyla</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/swanna.gif" alt="Skyla" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="waterpokemon-name">Blastoise [Blizzard]</span> + <span class="icepokemon-name">Vanilluxe [Icy Wind]</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe">
+        <b>Lead:</b> <span class="waterpokemon-name">Blastoise [Blizzard]</span> + <span class="icepokemon-name">Vanilluxe [Icy Wind]</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If no Whimsicott or Skarmory leads:</b></u><br>
-        <span class="waterpokemon-name">Blizzard</span> + <span style="color:#ffb84d;">X.SpA [Blastoise]</span>
-    </div>
-
-    <div class="fight-section" style="border-left-color: rgb(41,238,77);">
-        <u style="color:rgb(41,238,77);"><b>For 3-turn solve guarantee:</b></u><br>
-        Use Double Blizzard whenever possible, or reload PP with Leppas. <br>
-        <u style="color:#ff6b35;">If you did Driftveil:</u> Just spam <span class="waterpokemon-name">Blizzard</span> + <span class="waterpokemon-name">Water Spout</span>.
-    </div>
-
-    <!-- NIMBASA -->
     <h1>26. Nimbasa City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/1/1b/Unova_Nimbasa_City_Map.png" alt="Nimbasa City">
-        <div>
-            <u><b>Gym Leader: Elesa</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/zebstrika.gif" alt="Elesa" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Incinerate</span> (use Eruption when PP allows)
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Ampharos or Milotic:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/ampharos.gif" alt="Ampharos">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/milotic.gif" alt="Milotic"><br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span style="color:#ffb84d;">X.SpA [Typhlosion]</span>
+        <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Incinerate</span>
     </div>
 
     <h1 style="color:rgb(41, 238, 77)">⬆ HEAL AFTER UNOVA</h1>
 
-    <h2 style="color: #ffb84d; margin-top: 40px;">JOHTO</h2>
+    <h2 style="color: #ffb84d;">JOHTO</h2>
     <hr>
 
-    <!-- GOLDENROD -->
     <h1>27. Goldenrod City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/e/ec/Johto_Goldenrod_City_Map.png" alt="Goldenrod City">
-        <div>
-            <u><b>Gym Leader: Whitney</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/miltank.gif" alt="Whitney" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Eruption</span>
+        <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Minccino + Miltank lead:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/minccino.gif" alt="Minccino">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/miltank.gif" alt="Miltank"><br>
-        Swap both to <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span>
-    </div>
-
-    <!-- AZALEA -->
     <h1>28. Azalea Town</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/3/30/Johto_Azalea_Town_Map.png" alt="Azalea Town">
-        <div>
-            <u><b>Gym Leader: Bugsy</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/scizor.gif" alt="Bugsy" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion [Incinerate]</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="rockpokemon-name">Rock Slide</span> + <span class="firepokemon-name">Incinerate</span>
+        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Yanmega or Butterfree leads (Quagsire team):</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/yanmega.gif" alt="Yanmega">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/butterfree.gif" alt="Butterfree"><br>
-        <span class="rockpokemon-name">Rock Slide</span> + <span class="firepokemon-name">Eruption</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Beedrill or Forretress leads:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/beedrill.gif" alt="Beedrill">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/forretress.gif" alt="Forretress"><br>
-        Swap both to <span class="rockpokemon-name">Aerodactyl</span> + <span class="dragonpokemon-name">Excadrill</span>
-    </div>
-
-    <!-- VIOLET -->
     <h1>29. Violet City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/1/1f/Johto_Violet_City_Map.png" alt="Violet City">
-        <div>
-            <u><b>Gym Leader: Falkner</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/pidgeot.gif" alt="Falkner" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="waterpokemon-name">Blastoise</span> + <span class="icepokemon-name">Vanilluxe</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe"> <br>
-        <span class="waterpokemon-name">Water Spout</span> + <span class="icepokemon-name">Blizzard</span>
+        <b>Lead:</b> <span class="waterpokemon-name">Blastoise</span> + <span class="icepokemon-name">Vanilluxe</span>
     </div>
 
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Pelipper or Zapdos:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/pelipper.gif" alt="Pelipper">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/zapdos.gif" alt="Zapdos"><br>
-        <span style="color:#ffb84d;">X.SpA [Blastoise]</span> + <span class="waterpokemon-name">Water Spout</span>
-    </div>
-
-    <!-- MAHOGANY -->
     <h1>30. Mahogany Town</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/4/46/Johto_Mahogany_Town_Map.png" alt="Mahogany Town">
-        <div>
-            <u><b>Gym Leader: Pryce</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/piloswine.gif" alt="Pryce" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
-        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        Use <span class="rockpokemon-name">Aero Sunny Day</span>, then <span class="rockpokemon-name">Rock Slide</span> + <span class="firepokemon-name">Eruption</span>
+        <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <!-- CIANWOOD -->
     <h1>31. Cianwood City</h1>
-    <div class="gym-card">
-        <img src="https://archives.bulbagarden.net/media/upload/d/d8/Johto_Cianwood_City_Map.png" alt="Cianwood City">
-        <div>
-            <u><b>Gym Leader: Chuck</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/poliwrath.gif" alt="Chuck" style="width:80px;">
-        </div>
-    </div>
-
     <div class="fight-section">
         <b>Lead:</b> <span class="normalpokemon-name">Meloetta</span> + <span class="firepokemon-name">Typhlosion</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="normalpokemon-name">Hyper Voice</span> + <span class="firepokemon-name">Eruption</span>
+        <b>Machamp/Hitmontop:</b> <span class="normalpokemon-name">Hyper Voice</span> + <span style="color:#ffb84d;">X.SpA [Typhlosion]</span>
     </div>
 
+    <h1 style="color:#5588cc;">32. Olivine City (Optional)</h1>
     <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Machamp or Hitmontop [+ Donphan L71]:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/machamp.gif" alt="Machamp">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/hitmontop.gif" alt="Hitmontop"><br>
-        <b>T1:</b> <span class="normalpokemon-name">Hyper Voice</span> + <span style="color:#ffb84d;">X.SpA [Typhlosion]</span> <br>
-        <b>T2.1:</b> <span class="normalpokemon-name">Hyper Voice</span> &nbsp; <b>T2.2:</b> <span class="firepokemon-name">Eruption</span>
+        <b>Lead:</b> <span class="waterpokemon-name">Blastoise</span> + <span class="firepokemon-name">Typhlosion</span>
     </div>
 
-    <div class="fight-section" style="border-left-color: rgb(41,238,77);">
-        <u style="color:rgb(41,238,77);"><b>For 3-turn solve guarantee:</b></u><br>
-        Always use <span style="color:#ffb84d;">X.Special T1</span> to guarantee OHKO on all variants. <br>
-        Then use <span class="normalpokemon-name">Helping Hand</span> if Donphan or Rhyperior are <b>NOT</b> on the field.
-    </div>
-
-    <br>
-    <h2 style="color:#5588cc;">[Optional] Extra Gyms — Heal before tackling these</h2>
-
-    <!-- OLIVINE OPTIONAL -->
-    <h1 style="color:#5588cc;">32. Olivine City</h1>
-    <div class="gym-card" style="border-color: #5588cc;">
-        <img src="https://archives.bulbagarden.net/media/upload/6/65/Johto_Olivine_City_Map.png" alt="Olivine City">
-        <div>
-            <u><b>Gym Leader: Jasmine</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/steelix.gif" alt="Jasmine" style="width:80px;">
-        </div>
-    </div>
-
-    <div class="fight-section">
-        <b>Lead:</b> <span class="waterpokemon-name">Blastoise</span> + <span class="firepokemon-name">Typhlosion [Eruption when possible]</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/blastoise.gif" alt="Blastoise">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/typhlosion.gif" alt="Typhlosion"> <br>
-        <span class="waterpokemon-name">Water Spout</span> + <span class="firepokemon-name">Eruption</span>
-    </div>
-
-    <div class="fight-section">
-        <u style="color:#ff6b35;"><b>If Rapidash:</b></u> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/rapidash.gif" alt="Rapidash"><br>
-        <span style="color:#ffb84d;">X.SpA [Blastoise]</span> + <span class="waterpokemon-name">Water Spout</span>
-    </div>
-
-    <!-- BLACKTHORN OPTIONAL -->
-    <h1 style="color:#5588cc;">33. Blackthorn City</h1>
-    <div class="gym-card" style="border-color: #5588cc;">
-        <img src="https://archives.bulbagarden.net/media/upload/5/56/Johto_Blackthorn_City_Map.png" alt="Blackthorn City">
-        <div>
-            <u><b>Gym Leader: Clair</b></u> <br>
-            <img src="http://play.pokemonshowdown.com/sprites/gen5ani/kingdra.gif" alt="Clair" style="width:80px;">
-        </div>
-    </div>
-
+    <h1 style="color:#5588cc;">33. Blackthorn City (Optional)</h1>
     <div class="fight-section">
         <b>Lead:</b> <span class="rockpokemon-name">Aerodactyl</span> + <span class="normalpokemon-name">Meloetta</span> <br>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/aerodactyl.gif" alt="Aerodactyl">
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/meloetta.gif" alt="Meloetta"> <br>
-        <b>T1:</b> Always <span style="color:#ffb84d;">X.SpA [Meloetta]</span> <br>
-        Let <span class="rockpokemon-name">Aerodactyl</span> die → replace with <span class="icepokemon-name">Vanilluxe</span>
-        <img src="http://play.pokemonshowdown.com/sprites/gen5ani/vanilluxe.gif" alt="Vanilluxe">
+        <b>T1:</b> <span style="color:#ffb84d;">X.SpA [Meloetta]</span>
     </div>
 
-    <h1 style="color:rgb(41, 238, 77)">⬆ HEAL AFTER JOHTO</h1>
+    <h1 style="color:rgb(41, 238, 77)">⬆ COMPLETE! YOU'VE FINISHED THE 7 HELLS RUN!</h1>
 
     <div class="credits-section">
         <div class="credits-title">🔥 Credits & Attribution</div>
         <div class="credit-item">
-            <b>Original 7 Hells Route</b> — Groundbreaking gym rerun strategy featuring minimal item swaps and focused team composition.
+            <b>Original 7 Hells Route</b> — Created by the original community developers
         </div>
         <div class="credit-item">
-            <b>Meloetta Edition</b> — Modified and refined by <b>Alde</b>, featuring optimized Meloetta-based team with updated solves and consistent strategies.
+            <b>Meloetta Edition</b> — Modified and refined by <b>Alde</b>
         </div>
         <div class="credit-item">
-            <b>Guide Documentation</b> — Comprehensive route guide with detailed gym-by-gym strategies, movesets, and item configurations.
-        </div>
-        <div class="credit-item" style="margin-top:20px; color:#999; font-size:0.9rem;">
-            All Pokémon sprites from official databases. Item icons from PokeMMO assets. This guide is a community resource for PokeMMO players.
+            <b>Guide Documentation</b> — Complete route with all gym strategies
         </div>
     </div>
 
