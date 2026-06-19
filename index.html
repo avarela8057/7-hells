@@ -207,6 +207,80 @@
     color: var(--text);
   }
   .team-mon-abbr { color: var(--muted); font-size: 0.72rem; }
+
+  /* Team details */
+  .team-details {
+    display: none;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+  .team-details.show {
+    display: block;
+  }
+  .detail-section {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .item-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .item-img {
+    width: 24px;
+    height: 24px;
+    image-rendering: pixelated;
+  }
+  .item-name {
+    color: #ddaa44;
+    font-weight: 600;
+    font-size: 0.78rem;
+  }
+  .nature {
+    color: var(--muted);
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+  .moveset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 0.3rem;
+    font-size: 0.75rem;
+  }
+  .move-item {
+    color: #88aaee;
+    padding: 2px 4px;
+    background: rgba(136,170,238,0.1);
+    border-radius: 3px;
+    border: 0.5px solid rgba(136,170,238,0.2);
+  }
+
+  /* Credits */
+  .credits-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.83rem;
+    line-height: 1.7;
+  }
+  .credits-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
+  .credit-item {
+    margin-bottom: 0.6rem;
+    color: var(--muted);
+  }
+  .credit-item b {
+    color: var(--text);
+  }
   .note-bar {
     background: var(--surface2);
     border: 1px solid var(--border);
@@ -524,41 +598,159 @@
   <div class="team-bar">
     <div class="team-bar-title">Team — 7 Hells (Meloetta Edition)</div>
     <div class="team-members">
-      <a href="https://pokemondb.net/pokedex/meloetta" class="team-mon">
-        <img src="https://img.pokemondb.net/sprites/black-white/shiny/meloetta-aria.png" alt="Meloetta">
-        <div class="team-mon-name">Meloetta</div>
-        <div class="team-mon-abbr">Melo</div>
-      </a>
-      <a href="https://pokemondb.net/pokedex/typhlosion" class="team-mon">
-        <img src="https://img.pokemondb.net/sprites/black-white/shiny/typhlosion.png" alt="Typhlosion">
-        <div class="team-mon-name">Typhlosion</div>
-        <div class="team-mon-abbr">Typh</div>
-      </a>
-      <a href="https://pokemondb.net/pokedex/blastoise" class="team-mon">
-        <img src="https://img.pokemondb.net/sprites/black-white/shiny/blastoise.png" alt="Blastoise">
-        <div class="team-mon-name">Blastoise</div>
-        <div class="team-mon-abbr">Blast</div>
-      </a>
-      <a href="https://pokemondb.net/pokedex/vanilluxe" class="team-mon">
-        <img src="https://img.pokemondb.net/sprites/black-white/shiny/vanilluxe.png" alt="Vanilluxe">
-        <div class="team-mon-name">Vanilluxe</div>
-        <div class="team-mon-abbr">Vanil</div>
-      </a>
-      <a href="https://pokemondb.net/pokedex/aerodactyl" class="team-mon">
-        <img src="https://img.pokemondb.net/sprites/black-white/shiny/aerodactyl.png" alt="Aerodactyl">
-        <div class="team-mon-name">Aerodactyl</div>
-        <div class="team-mon-abbr">Aero</div>
-      </a>
-      <a href="https://pokemondb.net/pokedex/excadrill" class="team-mon">
-        <img src="https://img.pokemondb.net/sprites/black-white/shiny/excadrill.png" alt="Excadrill">
-        <div class="team-mon-name">Excadrill</div>
-        <div class="team-mon-abbr">Exca</div>
-      </a>
-      <a href="https://pokemondb.net/pokedex/togekiss" class="team-mon">
-        <img src="https://img.pokemondb.net/sprites/black-white/shiny/togekiss.png" alt="Togekiss">
-        <div class="team-mon-name">Togekiss</div>
-        <div class="team-mon-abbr">Toge</div>
-      </a>
+      <div style="position:relative;cursor:pointer;" onclick="toggleTeamDetails(this)">
+        <a href="https://pokemondb.net/pokedex/meloetta" class="team-mon" onclick="event.stopPropagation()">
+          <img src="https://img.pokemondb.net/sprites/black-white/shiny/meloetta-aria.png" alt="Meloetta">
+          <div class="team-mon-name">Meloetta</div>
+          <div class="team-mon-abbr">Melo</div>
+        </a>
+        <div class="team-details">
+          <div class="nature">Modest</div>
+          <div class="item-row">
+            <img src="choice-scarf.png" alt="Choice Scarf" class="item-img">
+            <span class="item-name">Choice Scarf / Specs</span>
+          </div>
+          <div style="margin-top:0.4rem;"><b style="color:#88aaee;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.05em;">Moves</b></div>
+          <div class="moveset">
+            <div class="move-item">Hyper Voice</div>
+            <div class="move-item">Helping Hand</div>
+            <div class="move-item">Psychic</div>
+            <div class="move-item">Shadow Ball</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;cursor:pointer;" onclick="toggleTeamDetails(this)">
+        <a href="https://pokemondb.net/pokedex/typhlosion" class="team-mon" onclick="event.stopPropagation()">
+          <img src="https://img.pokemondb.net/sprites/black-white/shiny/typhlosion.png" alt="Typhlosion">
+          <div class="team-mon-name">Typhlosion</div>
+          <div class="team-mon-abbr">Typh</div>
+        </a>
+        <div class="team-details">
+          <div class="nature">Modest</div>
+          <div class="item-row">
+            <img src="choice-specs.png" alt="Choice Specs" class="item-img">
+            <span class="item-name">Choice Specs</span>
+          </div>
+          <div style="margin-top:0.4rem;"><b style="color:#88aaee;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.05em;">Moves</b></div>
+          <div class="moveset">
+            <div class="move-item">Eruption</div>
+            <div class="move-item">Incinerate</div>
+            <div class="move-item">Cut</div>
+            <div class="move-item">Helping Hand</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;cursor:pointer;" onclick="toggleTeamDetails(this)">
+        <a href="https://pokemondb.net/pokedex/blastoise" class="team-mon" onclick="event.stopPropagation()">
+          <img src="https://img.pokemondb.net/sprites/black-white/shiny/blastoise.png" alt="Blastoise">
+          <div class="team-mon-name">Blastoise</div>
+          <div class="team-mon-abbr">Blast</div>
+        </a>
+        <div class="team-details">
+          <div class="nature">Modest</div>
+          <div class="item-row">
+            <img src="choice-scarf.png" alt="Choice Scarf" class="item-img">
+            <span class="item-name">Choice Scarf</span>
+          </div>
+          <div style="margin-top:0.4rem;"><b style="color:#88aaee;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.05em;">Moves</b></div>
+          <div class="moveset">
+            <div class="move-item">Water Spout</div>
+            <div class="move-item">Blizzard</div>
+            <div class="move-item">Helping Hand</div>
+            <div class="move-item">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;cursor:pointer;" onclick="toggleTeamDetails(this)">
+        <a href="https://pokemondb.net/pokedex/vanilluxe" class="team-mon" onclick="event.stopPropagation()">
+          <img src="https://img.pokemondb.net/sprites/black-white/shiny/vanilluxe.png" alt="Vanilluxe">
+          <div class="team-mon-name">Vanilluxe</div>
+          <div class="team-mon-abbr">Vanil</div>
+        </a>
+        <div class="team-details">
+          <div class="nature">Modest</div>
+          <div class="item-row">
+            <img src="choice-scarf.png" alt="Choice Scarf" class="item-img">
+            <span class="item-name">Choice Scarf</span>
+          </div>
+          <div style="margin-top:0.4rem;"><b style="color:#88aaee;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.05em;">Moves</b></div>
+          <div class="moveset">
+            <div class="move-item">Blizzard</div>
+            <div class="move-item">Icy Wind</div>
+            <div class="move-item">—</div>
+            <div class="move-item">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;cursor:pointer;" onclick="toggleTeamDetails(this)">
+        <a href="https://pokemondb.net/pokedex/aerodactyl" class="team-mon" onclick="event.stopPropagation()">
+          <img src="https://img.pokemondb.net/sprites/black-white/shiny/aerodactyl.png" alt="Aerodactyl">
+          <div class="team-mon-name">Aerodactyl</div>
+          <div class="team-mon-abbr">Aero</div>
+        </a>
+        <div class="team-details">
+          <div class="nature">Adamant</div>
+          <div class="item-row">
+            <img src="choice-band.png" alt="Wide Lens" class="item-img">
+            <span class="item-name">Wide Lens</span>
+          </div>
+          <div style="margin-top:0.4rem;"><b style="color:#88aaee;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.05em;">Moves</b></div>
+          <div class="moveset">
+            <div class="move-item">Rock Slide</div>
+            <div class="move-item">Sunny Day</div>
+            <div class="move-item">Rock Blast</div>
+            <div class="move-item">Protect</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;cursor:pointer;" onclick="toggleTeamDetails(this)">
+        <a href="https://pokemondb.net/pokedex/excadrill" class="team-mon" onclick="event.stopPropagation()">
+          <img src="https://img.pokemondb.net/sprites/black-white/shiny/excadrill.png" alt="Excadrill">
+          <div class="team-mon-name">Excadrill</div>
+          <div class="team-mon-abbr">Exca</div>
+        </a>
+        <div class="team-details">
+          <div class="nature">Jolly</div>
+          <div class="item-row">
+            <img src="choice-band.png" alt="Choice Band" class="item-img">
+            <span class="item-name">Choice Band</span>
+          </div>
+          <div style="margin-top:0.4rem;"><b style="color:#88aaee;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.05em;">Moves</b></div>
+          <div class="moveset">
+            <div class="move-item">Earthquake</div>
+            <div class="move-item">Rock Slide</div>
+            <div class="move-item">Helping Hand</div>
+            <div class="move-item">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;cursor:pointer;" onclick="toggleTeamDetails(this)">
+        <a href="https://pokemondb.net/pokedex/togekiss" class="team-mon" onclick="event.stopPropagation()">
+          <img src="https://img.pokemondb.net/sprites/black-white/shiny/togekiss.png" alt="Togekiss">
+          <div class="team-mon-name">Togekiss</div>
+          <div class="team-mon-abbr">Toge</div>
+        </a>
+        <div class="team-details">
+          <div class="nature">Modest</div>
+          <div class="item-row">
+            <img src="choice-specs.png" alt="Choice Specs" class="item-img">
+            <span class="item-name">Choice Specs</span>
+          </div>
+          <div style="margin-top:0.4rem;"><b style="color:#88aaee;font-size:0.73rem;text-transform:uppercase;letter-spacing:0.05em;">Moves</b></div>
+          <div class="moveset">
+            <div class="move-item">Hyper Voice</div>
+            <div class="move-item">Helping Hand</div>
+            <div class="move-item">Air Cutter</div>
+            <div class="move-item">Shock Wave</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1452,6 +1644,23 @@
     </div>
   </section>
 
+  <!-- ═══════════════ CREDITS ═══════════════ -->
+  <section class="credits-section">
+    <div class="credits-title">Credits & Attribution</div>
+    <div class="credit-item">
+      <b>7 Hells Route</b> — Original creators and developers of the 7 Hells gym rerun strategy. A groundbreaking approach to gym reruns focused on minimal item swaps and straightforward execution.
+    </div>
+    <div class="credit-item">
+      <b>Meloetta Edition</b> — Modified and refined version by <b>Alde</b>, featuring an optimized Meloetta-based team composition with updated solves and strategies for maximum consistency and speed.
+    </div>
+    <div class="credit-item">
+      <b>Guide Created</b> — Comprehensive documentation and route organization for easy in-run reference. Includes full team movesets, item configurations, and detailed gym-by-gym strategies.
+    </div>
+    <div class="credit-item" style="margin-top:0.8rem;color:#999;font-size:0.78rem;">
+      This guide is a community resource for PokeMMO players. All Pokémon sprites are official artwork from the Pokémon database. Item icons are from the official PokeMMO game assets.
+    </div>
+  </section>
+
 </main>
 </div>
 
@@ -1527,6 +1736,11 @@ https://pokeapi.co/api/v2/pokemon/{name-or-id}/
 
 ═════════════════════════════════════════════════════════════════════════════════
 */
+
+function toggleTeamDetails(elem) {
+  const details = elem.querySelector('.team-details');
+  details.classList.toggle('show');
+}
 
 function toggle(header) {
   const body = header.nextElementSibling;
